@@ -1,4 +1,4 @@
-﻿#include <windows.h>
+#include <windows.h>
 #include <iostream>
 #include <chrono>
 #include <iomanip>  // Để sử dụng std::put_time
@@ -49,8 +49,8 @@ void TypeNumber(const std::string& number) {
 
 int main() {
     Sleep(3000);
-    int x = 500;
-    int y = 540;
+    int x = 380;
+    int y = 380;
     while (true) {
         SYSTEMTIME st;
         GetLocalTime(&st);
@@ -60,48 +60,65 @@ int main() {
 
         int phut = st.wMinute % 5;
         std::cout << phut;
-        if (1 <= phut && phut <= 2) {
-
+        //if (1) {
+        if (st.wHour == 23 && st.wMinute >= 50) {
+            Sleep(1200000);
+        }
+        //else if (1) {
+        else if (1 <= phut && phut <= 1) {
+            MoveMouse(x + 200, y + 390);
+            ClickMouseLeft();
+            Sleep(500);
             MoveMouse(x, y);
             ClickMouseLeft();
+            Sleep(500);
             MoveMouse(x + 120, y + 320);
             DoubleClickMouseLeft();
-            TypeNumber("18836");
+            Sleep(500);
+            TypeNumber("518");
             Sleep(500);
             MoveMouse(x + 20, y + 390);
-            ClickMouseLeft();
-            MoveMouse(x + 360, y + 110);
-            Sleep(1000);
             ClickMouseLeft();
             Sleep(2000);
-        /*    int x = 500;
-            int y = 540;*/
-            MoveMouse(x + 80, y);
+            MoveMouse(x + 350, y + 270);
             ClickMouseLeft();
+
+            std::cout << "------------------Tai----------------" << std::endl;
+            Sleep(500);
+
+            MoveMouse(x + 200, y + 390);
+            ClickMouseLeft();
+            Sleep(500);
+            MoveMouse(x + 70, y);
+            ClickMouseLeft();
+            Sleep(500);
             MoveMouse(x + 120, y + 320);
             DoubleClickMouseLeft();
-            TypeNumber("21164");
+            Sleep(500);
+            TypeNumber("582");
             Sleep(500);
             MoveMouse(x + 20, y + 390);
             ClickMouseLeft();
-            MoveMouse(x + 360, y + 110);
-            Sleep(1000);
+            Sleep(2000);
+            MoveMouse(x + 350, y + 270);
             ClickMouseLeft();
+            std::cout << "------------------Xiu----------------" << std::endl;
 
             std::cout << "Runed" << std::endl;
             std::cout << "Current time: "
                 << st.wHour << ":" << st.wMinute << ":" << st.wSecond << std::endl;
             std::cout << "_______________________DONE_____________________";
-            Sleep(240000);
+            Sleep(250000); //5 phút
+            //Sleep(50000); //1 phút
 
         }
         else {
             std::cout << "Don't Run" << std::endl;
             std::cout << "Current time: "
                 << st.wHour << ":" << st.wMinute << ":" << st.wSecond << std::endl;
-            Sleep(10000); // Chờ 10 giây trước khi kiểm tra lại
+            Sleep(5000); // Chờ 10 giây trước khi kiểm tra lại
         }
-        std::cout << "___________________________________________________________________________";
+        std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
     }
     return 0;
 }
